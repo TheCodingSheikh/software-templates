@@ -1,38 +1,14 @@
-apiVersion: scaffolder.backstage.io/v1beta3
-kind: Template
+apiVersion: backstage.io/v1alpha1
+kind: Component
 metadata:
-  name: test
+  name: rbac-test
   title: Test
-  description: test
+  description: test rbac
+  namespace: default
 spec:
-  owner: platform-team
   type: service
-
-  parameters:
-    - title: Kubernetes Configuration
-      required:
-        - appName
-      properties:
-        appName:
-          title: App Name
-          type: string
-          description: Argo AppName
-
-        appNameValidator:
-          type: string
-          ui:field: ScaffolderFieldValidator
-          ui:options:
-            watchField: appName
-            validationType: api
-            apiPath: proxy/k8s/argoproj.io/v1alpha1/namespaces/argo-cd/applications
-            jmesPath: "items[?metadata.name == '{{ value }}']"
-            errorMessage: "App '{{ value }}' is already in use"
-
-
-  steps:
-    - id: log
-      name: Log Parameters
-      action: debug:log
-      input:
-        message: "test"
-        
+  lifecycle: managed
+  owner: default/abso
+  owners: 
+    - default/abdo
+  system: tenant
