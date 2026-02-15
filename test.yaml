@@ -5,10 +5,13 @@ metadata:
   title: Test
   description: test rbac
   namespace: default
+  annotations:
+    backstage.io/rbac: "true"
 spec:
   type: service
   lifecycle: managed
   owner: user:default/abdo
   owners: 
     - user:default/abdo
+    - user:default/abdo2
   system: tenant
