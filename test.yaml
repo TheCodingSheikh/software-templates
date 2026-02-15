@@ -8,6 +8,7 @@ metadata:
 spec:
   type: service
   lifecycle: managed
+  owner: user:default/abdo
   owners: 
     - user:default/abdo
   system: tenant
